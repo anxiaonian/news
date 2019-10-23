@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        button{
+            margin-left: 5px;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+        }
+
+        button a:hover{
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h2 class="sub-header">新闻列表</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>文章标题</th>
+                <th>发布时间</th>
+                <th>用户操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pg : ${session.newpg}">
+                <td th:text="${pg.id}"></td>
+                <td th:text="${pg.title}"></td>
+                <td th:text="${pg.datetime}"></td>
+                <td> <button type="button" class="btn btn-info"><a  th:href="@{/getnid?id=}+${pg.id}">查看</a></button>
+                    <button type="button" class="btn btn-danger"><a  th:href="@{/delnid?id=}+${pg.id}">删除</a></button>
+                    <button type="button" class="btn btn-info"><a  th:href="@{/updatenid?id=}+${pg.id}">修改</a></button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <button type="button" class="btn btn-info"><a th:href="@{/getnews?pn=1}">首页</a></button>
+                    <button type="button" class="btn btn-info"><a th:href="@{/getnews?pn=}+${session.pn<=1?1:session.pn-1}">上一页</a></button>
+                    <button type="button" class="btn btn-info"><a th:href="@{/getnews?pn=}+${session.pn>=session.totalpages?session.totalpages:session.pn+1}">下一页</a></button>
+                    <button type="button" class="btn btn-info"><a th:href="@{/getnews?pn=}+${session.totalpages}">末页</a></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+   <div class="sub-header2" ><a th:href="@{/getusers}">返回主页</a></div>
+</div>
+
+
+</body>
+</html>

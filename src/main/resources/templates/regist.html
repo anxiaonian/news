@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>用户登录</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+
+  
+
+
+  </head>
+
+  <body>
+  
+  
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background-color: white;height: 768px;left:-100px;">
+     <form class="form-signin" action="/add" method="post">
+        <h2 class="form-signin-heading">添加用户</h2>
+        <input type="text" name="username" class="form-control" placeholder="请输入用户名" required autofocus>
+        <input type="password"   name="password" class="form-control" placeholder="请输入用户密码" required>
+       
+        <button class="btn btn-lg btn-primary btn-block" type="submit">添加用户</button>
+      </form>
+  </div>
+
+
+  </body>
+</html>
